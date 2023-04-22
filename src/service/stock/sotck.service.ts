@@ -1,4 +1,5 @@
 import productModel from 'src/service/product.schema'
+import stockModel from './stock.schema'
 
 export class StockService{
 
