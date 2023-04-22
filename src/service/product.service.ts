@@ -1,6 +1,6 @@
 import { ProductType } from "./types/product.types";
 import productModel from './product.schema'
-import { writeFile } from 'fs/promises'
+import { writeFile, readFile } from 'fs/promises'
 
 export class ProductService {
 
@@ -50,10 +50,16 @@ export class ProductService {
     return randomProducts    
     }
 
-    async listText() {
+    async CreateText() {
         const ProdList = await productModel.find()
 
         await writeFile('products.json', JSON.stringify(ProdList, null, 2))
+    }
+
+    async listText() {
+        const ProdList = await readFile('products.json')
+
+        return ProdList
     }
 
 }
