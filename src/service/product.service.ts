@@ -34,4 +34,19 @@ export class ProductService {
     async remove(id) {
        await productModel.findByIdAndDelete(id)
     }
+
+    async find4Prod() {
+     
+        let randomProducts:any = []
+
+        while(randomProducts.length < 4) {
+        let randomNumber: any = Math.floor(Math.random() * 10)
+        if(!randomProducts.includes(productModel.findById(randomNumber))) {
+            randomProducts.push(productModel.findById(randomNumber))
+        }
+    }
+
+    return randomProducts    
+    }
+
 }
